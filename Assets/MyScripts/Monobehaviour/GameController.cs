@@ -1,23 +1,32 @@
 using System;
-using ECS.Features;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     private Contexts _contexts;
-    private PlayerHealthFeature _playerHealthFeature;
+    private PlayerInputFeature _playerInputFeature;
+    private EntityCreatingFeature _entityCreatingFeature;
 
     private void Start()
     {
         _contexts = Contexts.sharedInstance;
-
-        _playerHealthFeature = new PlayerHealthFeature(_contexts);
+        _playerInputFeature = new PlayerInputFeature(_contexts);
+        _entityCreatingFeature = new EntityCreatingFeature(_contexts);
         
-        _playerHealthFeature.Initialize();
+        
+        _playerInputFeature.Initialize();
+        _entityCreatingFeature.Initialize();
     }
 
     private void Update()
     {
-        _playerHealthFeature.Execute();
+        _playerInputFeature.Execute();
+        _entityCreatingFeature.Execute();
+    }
+
+    private void LateUpdate()
+    {
+        _playerInputFeature.Cleanup();
+        _entityCreatingFeature.Cleanup();
     }
 }

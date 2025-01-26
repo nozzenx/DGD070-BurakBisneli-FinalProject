@@ -8,21 +8,27 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int ECSComponentsPlayerDamaged = 0;
-    public const int ECSComponentsPlayerHealed = 1;
-    public const int ECSComponentsPlayerHealth = 2;
+    public const int EntityId = 0;
+    public const int Mover = 1;
+    public const int Position = 2;
+    public const int Speed = 3;
+    public const int Stopped = 4;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
-        "ECSComponentsPlayerDamaged",
-        "ECSComponentsPlayerHealed",
-        "ECSComponentsPlayerHealth"
+        "EntityId",
+        "Mover",
+        "Position",
+        "Speed",
+        "Stopped"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(ECS.Components.PlayerDamagedComponent),
-        typeof(ECS.Components.PlayerHealedComponent),
-        typeof(ECS.Components.PlayerHealthComponent)
+        typeof(EntityIdComponent),
+        typeof(MoverComponent),
+        typeof(PositionComponent),
+        typeof(SpeedComponent),
+        typeof(StoppedComponent)
     };
 }
